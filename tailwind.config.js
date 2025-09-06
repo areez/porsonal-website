@@ -1,15 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-const config = {
+module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/layouts/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        'primary': {
+        primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',
           200: '#bae6fd',
@@ -23,10 +24,6 @@ const config = {
           950: '#082f49',
         },
       },
-      fontFamily: {
-        sans: ['var(--font-inter)'],
-        mono: ['var(--font-fira-code)'],
-      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
@@ -34,53 +31,31 @@ const config = {
             a: {
               color: theme('colors.primary.500'),
               '&:hover': {
-                color: theme('colors.primary.700'),
+                color: theme('colors.primary.600'),
               },
             },
-            'h2,h3,h4': {
-              'scroll-margin-top': '100px',
-            },
-            code: {
-              color: theme('colors.pink.500'),
-              backgroundColor: theme('colors.gray.100'),
-              paddingLeft: '4px',
-              paddingRight: '4px',
-              paddingTop: '2px',
-              paddingBottom: '2px',
-              borderRadius: '0.25rem',
+            'h1,h2,h3,h4': {
+              color: theme('colors.gray.900'),
+              'scroll-margin-top': '6rem',
             },
           },
         },
         dark: {
           css: {
-            color: theme('colors.gray.200'),
+            color: theme('colors.gray.300'),
             a: {
               color: theme('colors.primary.400'),
               '&:hover': {
-                color: theme('colors.primary.500'),
+                color: theme('colors.primary.300'),
               },
-            },
-            blockquote: {
-              borderLeftColor: theme('colors.gray.700'),
-              color: theme('colors.gray.300'),
             },
             'h1,h2,h3,h4': {
               color: theme('colors.gray.100'),
-            },
-            hr: { borderColor: theme('colors.gray.700') },
-            strong: { color: theme('colors.gray.100') },
-            code: {
-              color: theme('colors.pink.400'),
-              backgroundColor: theme('colors.gray.800'),
             },
           },
         },
       }),
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [],
 };
-
-module.exports = config;

@@ -1,30 +1,19 @@
 /** @type {import('next').NextConfig} */
+const createMDX = require('@next/mdx');
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+});
+
 const nextConfig = {
-  images: {
-    domains: ['images.unsplash.com'], // Add any image domains you'll use
-  },
-  // Configure MDX support
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.mdx?$/,
-      use: [
-        {
-          loader: '@mdx-js/loader',
-          options: {
-            jsx: true,
-            remarkPlugins: [],
-            rehypePlugins: [],
-          },
-        },
-      ],
-    });
-    return config;
-  },
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  // Enable strict mode for better development
   reactStrictMode: true,
-  // Customize the URL prefix for static assets
-  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://areezafsar.com' : '',
+  images: {
+    domains: ['areezafsar.com'],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
 };
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);
