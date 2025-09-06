@@ -1,21 +1,9 @@
 {
-  // Basic Vercel configuration
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "name": "Areez Afsar Khan",
-  "alias": ["areezafsar.com", "www.areezafsar.com"],
-
-  // Clean URLs & trailing slashes for SEO
   "trailingSlash": false,
 
-  // Build settings
-  "builds": [
-    {
-      "src": "next.config.js",
-      "use": "@vercel/next"
-    }
-  ],
-
-  // Redirects & rewrites
   "redirects": [
     {
       "source": "/blog",
@@ -23,13 +11,12 @@
       "permanent": true
     },
     {
-      "source": "/www/(.*)",
-      "destination": "/$1",
+      "source": "/www/:path(.*)",
+      "destination": "/:path",
       "permanent": true
     }
   ],
 
-  // Headers for caching and SEO
   "headers": [
     {
       "source": "/(.*)",
